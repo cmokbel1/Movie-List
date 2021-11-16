@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+   <p>
+      <label for="showname">Show Name</label>
+      <input type="text" name="showname" id="showname">
+    </p>
+    <p>
+      <label for="episodes">Episodes</label>
+      <input type="text" name="episodes" id="episodes">
+    </p>
+    <p>
+      <label for="director">Director</label>
+      <input type="text" name="director" id="director">
+    </p>
+    <p>
+      <label for="maincharacter">Main Character</label>
+      <input type="text" name="maincharacter" id="maincharacter">
+    </p>
+    <button id="submit">PUSH</button>
+    </form>
+    <div id="stuff"></div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script>
+   $(document).on('click', '.delete', function () {
+      console.log('ping')
+      this.parentNode.remove()
+    });
+
+    $('#submit').click(event => {
+      event.preventDefault()
+
+      const showElem = $(`
+      <div>
+          <h4>Show: ${$('#showname').val()}</h4>
+          <h5>Episodes: ${$('#episodes').val()}</h5>
+          <h5>Director: ${$('#director').val()}</h5>
+          <h5>Main Character: ${$('#maincharacter').val()}</h5>
+          <button class="delete">Remove</button>
+          <hr>
+      </div>
+    `)
+
+    $('#stuff').append(showElem);
+
+      $('#showname').val("")
+      $('#episodes').val("")
+      $('#director').val("")
+      $('#maincharacter').val("")
+      });
+      </script>
+</body>
+
+</html>
